@@ -402,7 +402,7 @@ func needRenewalDynamic(x509Cert *x509.Certificate, domain string, now time.Time
 	}
 
 	log.Infof("[%s] The certificate expires at %s, the renewal can be performed in %s: no renewal.",
-		domain, x509Cert.NotAfter.Format(time.RFC3339), dueDate.Sub(now))
+		domain, x509Cert.NotAfter.Format(time.RFC3339), dueDate.Sub(now).Round(time.Second))
 
 	return false
 }
